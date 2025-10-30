@@ -87,7 +87,7 @@ if upload_files:
                 st.error("❌ Missing dependency: Please install `openpyxl`.")
                 st.stop()
             except Exception as e:
-            st.error(f"⚠️ Could not read Excel file: {e}")
+                st.error(f"⚠️ Could not read Excel file: {e}")
             continue
         else:
             st.error(f"❌ Unsupported file type: {file_ext}")
@@ -196,6 +196,7 @@ if upload_files:
     st.sidebar.success("🎉 All files processed successfully!")
 else:
     st.sidebar.info("Please upload a CSV or Excel file to get started!")
+
 
 
 
