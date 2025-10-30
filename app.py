@@ -97,7 +97,7 @@ if upload_files:
 
         # Show preview
         with st.expander("🔍 Preview First 5 Rows"):
-            st.dataframe(df.head(), use_container_width=True)
+            st.dataframe(df, width='stretch')
 
         # Data cleaning options
         with st.expander("🧹 Data Cleaning Options"):
@@ -189,3 +189,4 @@ if upload_files:
     st.sidebar.success("🎉 All files processed successfully!")
 else:
     st.sidebar.info("Please upload a CSV or Excel file to get started!")
+
