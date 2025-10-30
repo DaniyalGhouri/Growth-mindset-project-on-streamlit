@@ -81,7 +81,14 @@ if upload_files:
         if file_ext == ".csv":
             df = pd.read_csv(file)
         elif file_ext == ".xlsx":
-            df = pd.read_excel(file , engine="openpyxl")
+            try:
+                df = pd.read_excel(file, engine="openpyxl")
+            except ImportError:
+                st.error("❌ Missing dependency: Please install `openpyxl`.")
+                st.stop()
+            except Exception as e:
+            st.error(f"⚠️ Could not read Excel file: {e}")
+            continue
         else:
             st.error(f"❌ Unsupported file type: {file_ext}")
             continue # Skip to the next file if type is unsupported
@@ -189,5 +196,6 @@ if upload_files:
     st.sidebar.success("🎉 All files processed successfully!")
 else:
     st.sidebar.info("Please upload a CSV or Excel file to get started!")
+
 
 
